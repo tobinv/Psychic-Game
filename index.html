@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Trigger Random</title>
+
+  <!-- Added link to the jQuery library -->
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+
+  <!-- Added a link to Bootstrap-->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+</head>
+<body>
+
+  <div class="">
+
+    <h1 class="text-center">The Psychic Game</h1>
+
+    <div class="text-center">
+        
+      <!-- Here we have our button for generating random numbers (#random-button) -->
+      <p><span>Guess what number I'm thinking of...</span></p>
+      <h1><span class="glyphicon glyphicon-question-sign"></span></h1>
+    </div>
+
+  </div>
+
+  <!-- Outputs -->
+  
+  <p>Wins:<div id="wins"></div> </p>
+  <p>Losses:<div id="losses"></div> </p>
+  <p>Guesses Left:<div id="guessLeft"></div> </p>
+  <p>What you've guessed so far:   <span id="guesses"></span> </p>
+
+<h2><span id="user-text"><strong>Current Choice</strong></span></h2>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+
+         var alph="abcdefghijklmnopqrstuvwxyz0123456789";
+
+
+        var randomLetter = "";
+        var guessed = [];
+        var showit = document.getElementById("guesses");
+        var sticker = "";
+        var wins = 0;
+        var losses = 0;
+        var guessesTot = 5;
+
+        pickRand();
+
+
+
+
+      // start game by pressing any key
+
+      document.onkeyup = function(event) {
+        
+
+        sticker = event.key;
+        guessed.push(sticker);
+
+        showit.textContent = guessed.toString();
+        var typed = (event.key);
+        console.log(typed);
+      
+
+          console.log(wins);
+
+        if (typed == randomLetter) {
+            var wins = wins++;
+            console.log(wins);
+
+        };
+
+
+
+      };
+
+
+     
+
+
+
+      function pickRand() {
+
+       
+          var random = Math.floor(Math.random() * (37 - 0) + 0);
+          console.log(random);
+          randomLetter = alph.charAt(random);
+          console.log(randomLetter);
+          guessesTot = 5;
+
+
+
+
+        //var random = Math.floor(Math.random() * (27 - 0) + 0);
+        //var random = Math.floor(Math.random() * (999999999 - 99999999)) + 99999999;
+
+        // ... and then dump the random number into our random-number div.
+      
+
+        // var newDiv = $("<div>");
+        // $("#random-number").prepend(random);
+
+
+       
+
+
+};
+   
+
+  </script>
+
+</body>
+</html>
