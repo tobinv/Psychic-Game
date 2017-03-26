@@ -4,9 +4,8 @@
   <meta charset="UTF-8">
   <title>Psychic?</title>
 
-  <!-- Added link to the jQuery library -->
-  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-
+  <!-- Added link to the jQuery library
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script> -->
   <!-- Added a link to Bootstrap-->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
@@ -40,136 +39,137 @@
 
 
 
-  <script type="text/javascript">
+<!-- //   <script type="text/javascript"> 
 
-         var alph="abcdefghijklmnopqrstuvwxyz";
+//          var alph="abcdefghijklmnopqrstuvwxyz";
 
 
-        var randomLetter = "";
-        var guessed = [];
-        var showitW = document.getElementById("wins");
-        var showitL = document.getElementById("losses");
-        var showitG = document.getElementById("guessLeft");
-        var showit = document.getElementById("guesses");
-        var myMess = document.getElementById("mess");
-        var restart = document.getElementById("startOver");
+//         var randomLetter = "";
+//         var guessed = [];
+//         var showitW = document.getElementById("wins");
+//         var showitL = document.getElementById("losses");
+//         var showitG = document.getElementById("guessLeft");
+//         var showit = document.getElementById("guesses");
+//         var myMess = document.getElementById("mess");
+//         var restart = document.getElementById("startOver");
 
-        var sticker = "";
-        var wins = 0;
-        var losses = 0;
-        var increment = 1;
-        var gPass;
+//         var sticker = "";
+//         var wins = 0;
+//         var losses = 0;
+//         var increment = 1;
+//         var gPass;
         
 
         
-        showitW.textContent = wins;
-        showitL.textContent = losses;
+//         showitW.textContent = wins;
+//         showitL.textContent = losses;
         
 
-        pickRand();
+//         pickRand();
 
 
-      // start game by pressing any key
+//       // start game by pressing any key
 
-      document.onkeyup = function(event) {
+//       document.onkeyup = function(event) {
         
 
-        sticker = event.key;
-        guessed.push(sticker);
+//         sticker = event.key;
+//         guessed.push(sticker);
 
-        showit.textContent = guessed.toString();
-        var typed = (event.key);
-        //console.log(typed);
+//         showit.textContent = guessed.toString();
+//         var typed = (event.key);
+//         //console.log(typed);
       
 
           
 
-        if (typed == randomLetter) {
-            wins = (wins + increment);
-            //console.log(wins);
-            showitW.textContent = wins;
-            pickRand();
+//         if (typed == randomLetter) {
+//             wins = (wins + increment);
+//             //console.log(wins);
+//             showitW.textContent = wins;
+//             pickRand();
 
-        }
-        else {
-          //var dec1 = gPass;
-          gPass = gPass - increment;
-          console.log("gPass =" + gPass);
-          console.log("losses = " + losses);
-          showitG.textContent = gPass;
+//         }
+//         else {
+//           //var dec1 = gPass;
+//           gPass = gPass - increment;
+//           console.log("gPass =" + gPass);
+//           console.log("losses = " + losses);
+//           showitG.textContent = gPass;
 
-        };
+//         };
 
-if (gPass == 0) {
-        myMess.textContent = "Press any key to continue.";
+// if (gPass == 0) {
+//         myMess.textContent = "Press any key to continue.";
 
-        };
+//         };
 
-        if (gPass < 0) {
+//         if (gPass < 0) {
 
-          losses = (losses + 1);
-          showitL.textContent = losses;
-          pickRand();
-        };
+//           losses = (losses + 1);
+//           showitL.textContent = losses;
+//           pickRand();
+//         };
 
-        if (losses == 3 && gPass == 0) {
-          myMess.textContent = "You're Not a Psychic!!";
-          myMess.style.color = "white";
+//         if (losses == 3 && gPass == 0) {
+//           myMess.textContent = "You're Not a Psychic!!";
+//           myMess.style.color = "white";
 
-          document.body.style.color = "black";
-          document.body.style.backgroundColor = "black";
-          restart.textContent = "START OVER";
-          restart.style.color = "white";
+//           document.body.style.color = "black";
+//           document.body.style.backgroundColor = "black";
+//           restart.textContent = "START OVER";
+//           restart.style.color = "white";
 
-        }
-
-
+//         }
 
 
 
-   };
 
 
-     function reSt() {
-      location.reload();
-
-     };
+//    };
 
 
+//      function reSt() {
+//       location.reload();
 
-      function pickRand() {
-        myMess.textContent = "What you've guessed so far:";
-          var gTot = 5;
-          gPass = gTot;
-          guessed = [];
-          showit.textContent = " ";
-          showitG.textContent = gPass;
-          var random = Math.floor(Math.random() * (27 - 0) + 0);
-          //console.log(random);
-          randomLetter = alph.charAt(random);
-          console.log(randomLetter);
+//      };
+
+
+
+//       function pickRand() {
+//         myMess.textContent = "What you've guessed so far:";
+//           var gTot = 5;
+//           gPass = gTot;
+//           guessed = [];
+//           showit.textContent = " ";
+//           showitG.textContent = gPass;
+//           var random = Math.floor(Math.random() * (27 - 0) + 0);
+//           //console.log(random);
+//           randomLetter = alph.charAt(random);
+//           console.log(randomLetter);
          
 
 
 
 
-        //var random = Math.floor(Math.random() * (27 - 0) + 0);
-        //var random = Math.floor(Math.random() * (999999999 - 99999999)) + 99999999;
+//         //var random = Math.floor(Math.random() * (27 - 0) + 0);
+//         //var random = Math.floor(Math.random() * (999999999 - 99999999)) + 99999999;
 
-        // ... and then dump the random number into our random-number div.
+//         // ... and then dump the random number into our random-number div.
       
 
-        // var newDiv = $("<div>");
-        // $("#random-number").prepend(random);
+//         // var newDiv = $("<div>");
+//         // $("#random-number").prepend(random);
 
 
        
 
 
-};
+// };
    
 
-  </script>
+//   </script> -->
+  <script src="assets/javascript/game.js"></script>
 
 </body>
 </html>
