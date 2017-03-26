@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Trigger Random</title>
+  <title>Psychic?</title>
 
   <!-- Added link to the jQuery library -->
   <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
@@ -20,7 +20,7 @@
     <div class="text-center">
         
       <!-- Here we have our button for generating random numbers (#random-button) -->
-      <p><span>Guess what number I'm thinking of...</span></p>
+      <p><span>Guess what letter I'm thinking of...</span></p>
       <h1><span class="glyphicon glyphicon-question-sign"></span></h1>
     </div>
 
@@ -28,13 +28,12 @@
 
   <!-- Outputs -->
   
-  <p>Wins:<div id="wins"></div> </p>
-  <p>Losses:<div id="losses"></div> </p>
-  <p>Guesses Left:<div id="guessLeft"></div> </p>
-  <p>What you've guessed so far:   <span id="guesses"></span> </p>
+  <p> Wins:<span id="spacer"></span><span id="wins"></span> </p>
+  <p> Losses:<span id="spacer"></span><span id="losses"></span> </p>
+  <p> Guesses Left:<span id="spacer"></span><span id="guessLeft"></span> </p>
+  <h1 class="text-center"><p id="mess"> What you've guessed so far:<h2 class="text-center"><span id="spacer"></span><span id="guesses"></span></h2> </p></h1>
 
-<h2><span id="user-text"><strong>Current Choice</strong></span></h2>
-
+<div class="text-center"><p><h3><span id="startOver" onClick="reSt()" style="cursor: pointer;"></span></h3></p></div>
 
 
 
@@ -43,20 +42,31 @@
 
   <script type="text/javascript">
 
-         var alph="abcdefghijklmnopqrstuvwxyz0123456789";
+         var alph="abcdefghijklmnopqrstuvwxyz";
 
 
         var randomLetter = "";
         var guessed = [];
+        var showitW = document.getElementById("wins");
+        var showitL = document.getElementById("losses");
+        var showitG = document.getElementById("guessLeft");
         var showit = document.getElementById("guesses");
+        var myMess = document.getElementById("mess");
+        var restart = document.getElementById("startOver");
+
         var sticker = "";
         var wins = 0;
         var losses = 0;
-        var guessesTot = 5;
+        var increment = 1;
+        var gPass;
+        
+
+        
+        showitW.textContent = wins;
+        showitL.textContent = losses;
+        
 
         pickRand();
-
-
 
 
       // start game by pressing any key
@@ -69,34 +79,76 @@
 
         showit.textContent = guessed.toString();
         var typed = (event.key);
-        console.log(typed);
+        //console.log(typed);
       
 
-          console.log(wins);
+          
 
         if (typed == randomLetter) {
-            var wins = wins++;
-            console.log(wins);
+            wins = (wins + increment);
+            //console.log(wins);
+            showitW.textContent = wins;
+            pickRand();
+
+        }
+        else {
+          //var dec1 = gPass;
+          gPass = gPass - increment;
+          console.log("gPass =" + gPass);
+          console.log("losses = " + losses);
+          showitG.textContent = gPass;
 
         };
 
+if (gPass == 0) {
+        myMess.textContent = "Press any key to continue.";
+
+        };
+
+        if (gPass < 0) {
+
+          losses = (losses + 1);
+          showitL.textContent = losses;
+          pickRand();
+        };
+
+        if (losses == 3 && gPass == 0) {
+          myMess.textContent = "You're Not a Psychic!!";
+          myMess.style.color = "white";
+
+          document.body.style.color = "black";
+          document.body.style.backgroundColor = "black";
+          restart.textContent = "START OVER";
+          restart.style.color = "white";
+
+        }
 
 
-      };
 
 
-     
+
+   };
+
+
+     function reSt() {
+      location.reload();
+
+     };
 
 
 
       function pickRand() {
-
-       
-          var random = Math.floor(Math.random() * (37 - 0) + 0);
-          console.log(random);
+        myMess.textContent = "What you've guessed so far:";
+          var gTot = 5;
+          gPass = gTot;
+          guessed = [];
+          showit.textContent = " ";
+          showitG.textContent = gPass;
+          var random = Math.floor(Math.random() * (27 - 0) + 0);
+          //console.log(random);
           randomLetter = alph.charAt(random);
           console.log(randomLetter);
-          guessesTot = 5;
+         
 
 
 
